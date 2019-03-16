@@ -36,9 +36,9 @@ spring:
             indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:sqlserver://localhost:1433;database=MindShopper
-        username: SA
-        password: yourStrong(!)Password
+        url: jdbc:sqlserver://mindshopper.database.windows.net;database=mindshopper
+        username: mindshopper
+        password: 8799LipYAA9oksRLG6ia
         hikari:
             auto-commit: false
             data-source-properties:
