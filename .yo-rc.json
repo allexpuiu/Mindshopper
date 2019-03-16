@@ -1,0 +1,32 @@
+{
+    "generator-jhipster": {
+        "promptValues": {
+            "packageName": "ro.mindit.mindshopper"
+        },
+        "jhipsterVersion": "5.7.2",
+        "applicationType": "monolith",
+        "baseName": "MindShopper",
+        "packageName": "ro.mindit.mindshopper",
+        "packageFolder": "ro/mindit/mindshopper",
+        "serverPort": "8080",
+        "authenticationType": "jwt",
+        "cacheProvider": "no",
+        "websocket": false,
+        "databaseType": "sql",
+        "devDatabaseType": "mssql",
+        "prodDatabaseType": "mssql",
+        "searchEngine": false,
+        "messageBroker": false,
+        "serviceDiscoveryType": false,
+        "buildTool": "maven",
+        "enableSwaggerCodegen": false,
+        "jwtSecretKey": "NzdkMTdlM2I5NTZkNmZmNWVhMzZlMGYwNDkzMjhjYTYxYjAyZGYwZTg1YWYzMjE3OTQ3MjQ5N2VjNTkyOTg3NjY3ZWFmOGE3OGRlNTI0ZmZjYTQxNGMyODU5YTM2MzA3ODY1YjYxOTBmM2Y5N2UzMmIzMmE1MzJhMGViZDlkNjA=",
+        "clientFramework": "angularX",
+        "useSass": true,
+        "clientPackageManager": "npm",
+        "testFrameworks": [],
+        "jhiPrefix": "jhi",
+        "otherModules": [],
+        "enableTranslation": false
+    }
+}
