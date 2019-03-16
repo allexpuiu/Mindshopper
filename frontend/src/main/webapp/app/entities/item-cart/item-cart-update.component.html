@@ -1,0 +1,111 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-item-cart-heading">Create or edit a Item Cart</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!itemCart.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="itemCart.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_itemId">Item Id</label>
+                    <input type="text" class="form-control" name="itemId" id="field_itemId"
+                        [(ngModel)]="itemCart.itemId" required maxlength="50"/>
+                    <div [hidden]="!(editForm.controls.itemId?.dirty && editForm.controls.itemId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemId?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemId?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_itemDescription">Item Description</label>
+                    <input type="text" class="form-control" name="itemDescription" id="field_itemDescription"
+                        [(ngModel)]="itemCart.itemDescription" required maxlength="150"/>
+                    <div [hidden]="!(editForm.controls.itemDescription?.dirty && editForm.controls.itemDescription?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemDescription?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemDescription?.errors?.maxlength">
+                        This field cannot be longer than 150 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                        [(ngModel)]="itemCart.price" required/>
+                    <div [hidden]="!(editForm.controls.price?.dirty && editForm.controls.price?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.price?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.price?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                        [(ngModel)]="itemCart.quantity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categoryId">Category Id</label>
+                    <input type="text" class="form-control" name="categoryId" id="field_categoryId"
+                        [(ngModel)]="itemCart.categoryId" required maxlength="50"/>
+                    <div [hidden]="!(editForm.controls.categoryId?.dirty && editForm.controls.categoryId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.categoryId?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.categoryId?.errors?.maxlength">
+                        This field cannot be longer than 50 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_categoryDescription">Category Description</label>
+                    <input type="text" class="form-control" name="categoryDescription" id="field_categoryDescription"
+                        [(ngModel)]="itemCart.categoryDescription" required maxlength="100"/>
+                    <div [hidden]="!(editForm.controls.categoryDescription?.dirty && editForm.controls.categoryDescription?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.categoryDescription?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.categoryDescription?.errors?.maxlength">
+                        This field cannot be longer than 100 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_cart">Cart</label>
+                    <select class="form-control" id="field_cart" name="cart" [(ngModel)]="itemCart.cart" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cartOption.id === itemCart.cart?.id ? itemCart.cart : cartOption" *ngFor="let cartOption of carts; trackBy: trackCartById">{{cartOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

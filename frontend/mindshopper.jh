@@ -1,0 +1,25 @@
+entity Cart {
+	status Status
+    dateCreated Instant
+}
+
+enum Status {
+    NEW, COMPLETED
+}
+
+entity ItemCart {
+	itemId String required maxlength(50)
+	itemDescription String required maxlength(150)
+    price BigDecimal required
+    quantity Integer
+    categoryId String required maxlength(50)
+    categoryDescription String required maxlength(100)
+}
+
+relationship ManyToOne {
+	Cart{user(id)} to User 
+}
+
+relationship OneToMany {
+	Cart{items(id)} to ItemCart
+}
