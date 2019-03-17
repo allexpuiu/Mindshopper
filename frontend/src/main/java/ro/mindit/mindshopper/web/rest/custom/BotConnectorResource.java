@@ -4,7 +4,6 @@ package ro.mindit.mindshopper.web.rest.custom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +42,7 @@ public class BotConnectorResource {
     }
 
     @GetMapping(value = "/carts/{cartId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity getCart(@Param("cartId") Long cartId) {
+    public ResponseEntity getCart(@PathVariable("cartId") Long cartId) {
         Optional<Cart> cart =  cartService.findById(cartId);
 
         if(!cart.isPresent()) {
@@ -54,7 +53,7 @@ public class BotConnectorResource {
     }
 
     @GetMapping(value = "/carts/{cartId}/items", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity getItemsByCart(@Param("cartId") Long cartId) {
+    public ResponseEntity getItemsByCart(@PathVariable("cartId") Long cartId) {
         List<ItemCart> items =  itemCartService.findByCartId(cartId);
 
         return ResponseEntity.ok(items);
