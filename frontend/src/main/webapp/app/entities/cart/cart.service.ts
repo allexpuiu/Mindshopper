@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { SERVER_API_URL } from 'app/app.constants';
 import { createRequestOption } from 'app/shared';
 import { ICart } from 'app/shared/model/cart.model';
+import { ItemCart, IItemCart } from 'app/shared/model/item-cart.model';
 
 type EntityResponseType = HttpResponse<ICart>;
 type EntityArrayResponseType = HttpResponse<ICart[]>;
@@ -47,6 +48,10 @@ export class CartService {
 
     delete(id: number): Observable<HttpResponse<any>> {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+    }
+
+    getItems(id: number): Observable<HttpResponse<IItemCart[]>> {
+        return this.http.get<IItemCart[]>(`${this.resourceUrl}/${id}/items`, { observe: 'response' });
     }
 
     protected convertDateFromClient(cart: ICart): ICart {
