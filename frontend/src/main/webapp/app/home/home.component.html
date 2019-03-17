@@ -1,12 +1,14 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
         <h1 class="display-4">Welcome to MindShopper!</h1>
         <p class="lead">One online shop to rule them all!</p>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="card" *ngSwitchCase="true">
                 <div class="alert">
-                    <span id="home-logged-message" *ngIf="account"> Hello, <strong>{{account.firstName}} {{account.lastName}}!</strong>
+                    <span id="home-logged-message" *ngIf="account"> Hello, <strong>{{account.firstName}}
+                            {{account.lastName}}!</strong>
                     </span>
                 </div>
             </div>
@@ -14,10 +16,24 @@
             <div class="card" *ngSwitchCase="false">
                 <div class="alert">
                     <span>Please </span><a class="alert-link" (click)="login()">sign in</a> or <a class="alert-link"
-                    (click)="register()">register.</a>
+                        (click)="register()">register.</a>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="card" style="margin-top: 15px; height: 650px; padding: 15px" *ngIf="isAuthenticated()">
+            <div class="row">
+                <div class="col-md-8">
+                    <jhi-chat-window></jhi-chat-window>
+                </div>
+                
+                <div class="col-md-4">side</div>
+            </div>
+        </div>
     </div>
 </div>
