@@ -4,6 +4,8 @@ import ro.mindit.mindshopper.domain.ItemCart;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the ItemCart entity.
@@ -12,4 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ItemCartRepository extends JpaRepository<ItemCart, Long> {
 
+    List<ItemCart> findItemsByCartId(Long cartId);
 }
